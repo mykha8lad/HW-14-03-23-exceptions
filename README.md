@@ -17,6 +17,7 @@ public class StringException : Exception
     public override string ToString() { return $"{StackTrace}\n"; }
 }
 ```
+____
 ### Также классы исключения CountStudentsException и CourseNumberException для обработки всех числовых вхождений отдельно для случая с некорректным количеством студентов, и некорректным значением курса
 ```cs
 public class IntException : Exception
@@ -54,8 +55,6 @@ public class CourseNumberException : IntException
     }
 }
 ```
-<br/>
-
 ____
 ### Класс Student с проработанными сеттерами исключением StringException выглядит так
  ```cs
@@ -188,4 +187,3 @@ static void Main(string[] args)
 ### И получаем такую красоту :star_struck:
 [![console.jpg](https://i.postimg.cc/RFmD840L/console.jpg)](https://postimg.cc/PL6yvGYC)
 [![99px-ru-animacii-12142-chernaja-obezjana-cheshet-golovu-smotrja-v-kameru.gif](https://i.postimg.cc/c4b23Bmt/99px-ru-animacii-12142-chernaja-obezjana-cheshet-golovu-smotrja-v-kameru.gif)](https://postimg.cc/4mpWktjX)
-____
