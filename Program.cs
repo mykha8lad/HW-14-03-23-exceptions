@@ -15,7 +15,7 @@ namespace HW_14_03_23_exceptions
             }
             catch (Exception exc)
             {
-                Console.WriteLine(exc);
+                Console.WriteLine(exc);                
             }
 
             try
@@ -33,7 +33,7 @@ namespace HW_14_03_23_exceptions
 
             try
             {
-                gr.setGroupName("null");
+                gr.setGroupName(null);
             }
             catch (Exception exc)
             {
