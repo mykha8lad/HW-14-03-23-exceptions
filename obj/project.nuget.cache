@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "UKnYPk/afG9TcoMw17W3RTlLOoW90Xp1aOtAzDF51/TlqxT9FhkEEvZ9IgDMUYcQZl0CyQ75iT8ZIkjAikq22Q==",
+  "success": true,
+  "projectFilePath": "D:\\c#-projects\\HW_14_03_23_exceptions\\HW_14_03_23_exceptions\\HW_14_03_23_exceptions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Влад\\.nuget\\packages\\faker.net\\2.0.154\\faker.net.2.0.154.nupkg.sha512",
+    "C:\\Users\\Влад\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Влад\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
