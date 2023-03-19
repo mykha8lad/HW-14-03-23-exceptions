@@ -6,28 +6,25 @@ namespace HW_14_03_23_exceptions
     {
         static void Main(string[] args)
         {
-            /*#region Проверка класса Student на выброс исключений
+            #region Проверка класса Student на выброс исключений
             Student st = new Student();
 
             try
             {
                 st.setSurname("  ");
-                /// st.setName("");
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(exc);
             }
 
             try
             {
                 st.setAddress("Reni", "Paris Commune", "");
-                /// Исключение шлепнулось из-за пустой строки, проверка на это так же учтена.
-                /// К сожалению она не ловится если значение равно " ".
             }
             catch (Exception exc)
             {
-                Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);
+                Console.WriteLine(exc);
             }
             #endregion
 
@@ -36,16 +33,31 @@ namespace HW_14_03_23_exceptions
 
             try
             {
-                gr.setGroupName("dfsd");
-                gr.setGroupSpecialization("dfs");
-                gr.setCourseNumber(0);
-                gr.setCountStudents(10);
+                gr.setGroupName("null");
             }
             catch (Exception exc)
             {
                 Console.WriteLine(exc);
             }
-            #endregion*/
+
+            try
+            {
+                gr.setCourseNumber(0);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+            }
+
+            try
+            {
+                gr.setCountStudents(-1);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+            }
+            #endregion
         }
     }
 }
