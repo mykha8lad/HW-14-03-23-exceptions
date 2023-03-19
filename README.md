@@ -1,20 +1,77 @@
 # Дз от 14/03/23. Exceptions
 ## 1. В класс Student и в класс Group добавить по три генерации исключений.
-### Класс Student
+### Дело было вечером делать было нечего, я решил упороться в библиотеку и написать классы собственных исключений. Но не запушил этот самый проект с библиотекой в общее решение поэтому имеем шо имеем
+[![solution.jpg](https://i.postimg.cc/Qdk5m3R3/solution.jpg)](https://postimg.cc/K1jRcdGq)
+### Класс исключения StringException для выброса исключений всех строковых вхождений
+```cs
+public class StringException : Exception
+{
+    private readonly string strMessageException = "Value property cannot be \"null\", a space, or an empty occurrence, please refer to the detailed documentation or try again.\n";
+    private string getStrMessageException() { return this.strMessageException; }
+
+    public StringException()
+    {
+        Console.Write($"Exception: {getStrMessageException()}");
+    }
+
+    public override string ToString() { return $"{StackTrace}\n"; }
+}
+```
+### Также классы исключения CountStudentsException и CourseNumberException для обработки всех числовых вхождений отдельно для случая с некорректным количеством студентов, и некорректным значением курса
+```cs
+public class IntException : Exception
+{
+    private readonly string intMessageException = "Range violated. ";
+    private string getIntMessageException() { return this.intMessageException; }
+
+    public IntException()
+    {
+        Console.Write($"Exception: {getIntMessageException()}");
+    }
+
+    public override string ToString() { return $"{StackTrace}\n"; }
+}
+
+public class CountStudentsException : IntException
+{
+    private readonly string CountStudentsMessageException = "The number of students cannot exceed 15, or or be less than 5.\n";
+    private string getMessageException() { return this.CountStudentsMessageException; }
+
+    public CountStudentsException()
+    {
+        Console.Write(getMessageException());
+    }
+}
+
+public class CourseNumberException : IntException
+{
+    private readonly string CourseNumberMessageException = "The number of courses cannot exceed 5, or or be less than 1.\n";
+    private string getMessageException() { return this.CourseNumberMessageException; }
+
+    public CourseNumberException()
+    {
+        Console.Write(getMessageException());
+    }
+}
+```
+<br/>
+
+____
+### Класс Student с проработанными сеттерами исключением StringException выглядит так
  ```cs
 public void setName(string name)
 {
-    if (String.IsNullOrEmpty(name)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name)) throw new StringException();
     this.name = name;
 }
 public void setLastname(string lastname)
 {
-    if (String.IsNullOrEmpty(lastname)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(lastname) || String.IsNullOrWhiteSpace(lastname)) throw new StringException();
     this.lastname = lastname;
 }
 public void setSurname(string surname)
 {
-    if (String.IsNullOrEmpty(name)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(surname)) throw new StringException();
     this.surname = surname;
 }
 public void setPhoneNumber(string phoneNumber)
@@ -31,46 +88,46 @@ ____
 ```cs
 public void setCity(string city)
 {
-    if (String.IsNullOrEmpty(city)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(city) || String.IsNullOrWhiteSpace(city)) throw new StringException();
     this.city = city;
 }
 public void setStreet(string street)
 {
-    if (String.IsNullOrEmpty(street)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(street) || String.IsNullOrWhiteSpace(street)) throw new StringException();
     this.street = street;
 }
 public void setHomeNumber(string homeNumber)
 {
-    if (String.IsNullOrEmpty(homeNumber)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(homeNumber) || String.IsNullOrWhiteSpace(homeNumber)) throw new StringException();
     this.homeNumber = homeNumber;
 }
 ```
 ____
-### Класс Group
+### Сеттеры класса Group с исключениями CourseNumberException и CountStudentsException
 ```cs
 public void setCountStudents(int countStudents)
 {
-    if (countStudents < 5 || countStudents > 15) throw new Exception("The number of students cannot exceed 15, or or be less than 5.");
+    if (countStudents < 5 || countStudents > 15) throw new CountStudentsException();
     this.studentsInGroup = countStudents;
 }
 public void setGroupName(string groupName)
 {
-    if (String.IsNullOrEmpty(groupName)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(groupName) || String.IsNullOrWhiteSpace(groupName)) throw new StringException();
     this.groupName = groupName;
 }
 public void setGroupSpecialization(string groupSpecialization)
 {
-    if (String.IsNullOrEmpty(groupSpecialization)) throw new ArgumentNullException();
+    if (String.IsNullOrEmpty(groupSpecialization) || String.IsNullOrWhiteSpace(groupSpecialization)) throw new StringException();
     this.groupSpecialization = groupSpecialization;
 }
 public void setCourseNumber(int courseNumber)
 {
-    if (courseNumber < 1 || courseNumber > 5) throw new Exception("The number of courses cannot exceed 5, or or be less than 1.");
+    if (courseNumber < 1 || courseNumber > 5) throw new CourseNumberException();
     this.courseNumber = courseNumber;
 }
 ```
 ____
-## 2. В main протестировать перехват этих исключений
+## 2. В main перехватываем всё это дело
 ```cs
 static void Main(string[] args)
 {
@@ -79,25 +136,20 @@ static void Main(string[] args)
 
     try
     {
-        st.setName(null);
-        /// st.setName("");
+        st.setSurname("  ");
     }
     catch (Exception exc)
     {
-        Console.WriteLine("An exception has been thrown!\n" + exc.Message);
-        /// An exception has been thrown!
-        /// Value cannot be null.
+        Console.WriteLine(exc);                
     }
 
     try
     {
         st.setAddress("Reni", "Paris Commune", "");
-        /// Исключение шлепнулось из-за пустой строки, проверка на это так же учтена.
-        /// К сожалению она не ловится если значение равно " ".
     }
     catch (Exception exc)
     {
-        Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);
+        Console.WriteLine(exc);
     }
     #endregion
 
@@ -106,18 +158,34 @@ static void Main(string[] args)
 
     try
     {
-        gr.setGroupName("P12");
-        gr.setGroupSpecialization("C#");
-        gr.setCourseNumber(2);
-        gr.setCountStudents(3);
+        gr.setGroupName(null);
+    }   
+    catch (Exception exc)
+    {
+        Console.WriteLine(exc);
+    }
+
+    try
+    {
+        gr.setCourseNumber(0);
     }
     catch (Exception exc)
     {
-        Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);   
+        Console.WriteLine(exc);
+    }
+
+    try
+    {
+        gr.setCountStudents(-1);
+    }
+    catch (Exception exc)
+    {
+        Console.WriteLine(exc);
     }
     #endregion
 }
 ```
-### Результат:
-[![1.jpg](https://i.postimg.cc/50KC7XZC/1.jpg)](https://postimg.cc/YGg0jC2r)
+### И получаем такую красоту :star_struck:
+[![console.jpg](https://i.postimg.cc/RFmD840L/console.jpg)](https://postimg.cc/PL6yvGYC)
+[![99px-ru-animacii-12142-chernaja-obezjana-cheshet-golovu-smotrja-v-kameru.gif](https://i.postimg.cc/c4b23Bmt/99px-ru-animacii-12142-chernaja-obezjana-cheshet-golovu-smotrja-v-kameru.gif)](https://postimg.cc/4mpWktjX)
 ____
