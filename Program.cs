@@ -6,19 +6,17 @@ namespace HW_14_03_23_exceptions
     {
         static void Main(string[] args)
         {
-            #region Проверка класса Student на выброс исключений
+            /*#region Проверка класса Student на выброс исключений
             Student st = new Student();
 
             try
             {
-                st.setName(null);
+                st.setSurname("  ");
                 /// st.setName("");
             }
-            catch (Exception exc)
+            catch (Exception e)
             {
-                Console.WriteLine("An exception has been thrown!\n" + exc.Message);
-                /// An exception has been thrown!
-                /// Value cannot be null.
+                Console.WriteLine(e);
             }
 
             try
@@ -29,25 +27,25 @@ namespace HW_14_03_23_exceptions
             }
             catch (Exception exc)
             {
-                Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);                
+                Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);
             }
             #endregion
 
             #region Проверка класса Group на выброс исключений
             Group gr = new Group();
-            
+
             try
             {
-                gr.setGroupName("P12");
-                gr.setGroupSpecialization("C#");
-                gr.setCourseNumber(2);
-                gr.setCountStudents(3);
+                gr.setGroupName("dfsd");
+                gr.setGroupSpecialization("dfs");
+                gr.setCourseNumber(0);
+                gr.setCountStudents(10);
             }
             catch (Exception exc)
             {
-                Console.WriteLine("\nAn exception has been thrown!\n" + exc.Message);                
+                Console.WriteLine(exc);
             }
-            #endregion
+            #endregion*/
         }
     }
 }

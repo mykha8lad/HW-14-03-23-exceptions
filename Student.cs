@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using ExceptionLibrary;
 
 namespace HW_14_03_23_exceptions
 {
@@ -41,17 +42,17 @@ namespace HW_14_03_23_exceptions
         private void setId() { id = new Random().Next(357943, 8357235); }
         public void setName(string name)
         {
-            if (String.IsNullOrEmpty(name)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name)) throw new StringException();
             this.name = name;
         }
         public void setLastname(string lastname)
         {
-            if (String.IsNullOrEmpty(lastname)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(lastname) || String.IsNullOrWhiteSpace(lastname)) throw new StringException();
             this.lastname = lastname;
         }
         public void setSurname(string surname)
         {
-            if (String.IsNullOrEmpty(name)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(surname)) throw new StringException();
             this.surname = surname;
         }
         public void setPhoneNumber(string phoneNumber)

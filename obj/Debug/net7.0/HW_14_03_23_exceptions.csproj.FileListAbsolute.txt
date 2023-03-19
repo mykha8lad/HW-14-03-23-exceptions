@@ -16,3 +16,5 @@ D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\obj\Debug\net7.0\re
 D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\obj\Debug\net7.0\HW_14_03_23_exceptions.pdb
 D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\obj\Debug\net7.0\HW_14_03_23_exceptions.genruntimeconfig.cache
 D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\obj\Debug\net7.0\ref\HW_14_03_23_exceptions.dll
+D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\bin\Debug\net7.0\ExceptionLibrary.dll
+D:\c#-projects\HW_14_03_23_exceptions\HW_14_03_23_exceptions\bin\Debug\net7.0\ExceptionLibrary.pdb

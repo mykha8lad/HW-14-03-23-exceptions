@@ -42,6 +42,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "ExceptionLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ExceptionLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExceptionLibrary.dll": {}
+        }
       }
     }
   },
@@ -220,10 +230,16 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "ExceptionLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ExceptionLibrary/ExceptionLibrary.csproj",
+      "msbuildProject": "../ExceptionLibrary/ExceptionLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "ExceptionLibrary >= 1.0.0",
       "Faker.Net >= 2.0.154"
     ]
   },
@@ -259,7 +275,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\c#-projects\\HW_14_03_23_exceptions\\ExceptionLibrary\\ExceptionLibrary.csproj": {
+              "projectPath": "D:\\c#-projects\\HW_14_03_23_exceptions\\ExceptionLibrary\\ExceptionLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

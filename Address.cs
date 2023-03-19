@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExceptionLibrary;
+using System;
 
 namespace HW_14_03_23_exceptions
 {
@@ -17,17 +18,17 @@ namespace HW_14_03_23_exceptions
 
         public void setCity(string city)
         {
-            if (String.IsNullOrEmpty(city)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(city) || String.IsNullOrWhiteSpace(city)) throw new StringException();
             this.city = city;
         }
         public void setStreet(string street)
         {
-            if (String.IsNullOrEmpty(street)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(street) || String.IsNullOrWhiteSpace(street)) throw new StringException();
             this.street = street;
         }
         public void setHomeNumber(string homeNumber)
         {
-            if (String.IsNullOrEmpty(homeNumber)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(homeNumber) || String.IsNullOrWhiteSpace(homeNumber)) throw new StringException();
             this.homeNumber = homeNumber;
         }
 

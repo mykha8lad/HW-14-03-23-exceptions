@@ -5,6 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Collections.Generic;
 using Faker.Resources;
 using System.Xml.Linq;
+using ExceptionLibrary;
 
 namespace HW_14_03_23_exceptions
 {
@@ -71,22 +72,22 @@ namespace HW_14_03_23_exceptions
 
         public void setCountStudents(int countStudents)
         {
-            if (countStudents < 5 || countStudents > 15) throw new Exception("The number of students cannot exceed 15, or or be less than 5.");
+            if (countStudents < 5 || countStudents > 15) throw new CountStudentsException();
             this.studentsInGroup = countStudents;
         }
         public void setGroupName(string groupName)
         {
-            if (String.IsNullOrEmpty(groupName)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(groupName) || String.IsNullOrWhiteSpace(groupName)) throw new StringException();
             this.groupName = groupName;
         }
         public void setGroupSpecialization(string groupSpecialization)
         {
-            if (String.IsNullOrEmpty(groupSpecialization)) throw new ArgumentNullException();
+            if (String.IsNullOrEmpty(groupSpecialization) || String.IsNullOrWhiteSpace(groupSpecialization)) throw new StringException();
             this.groupSpecialization = groupSpecialization;
         }
         public void setCourseNumber(int courseNumber)
         {
-            if (courseNumber < 1 || courseNumber > 5) throw new Exception("The number of courses cannot exceed 5, or or be less than 1.");
+            if (courseNumber < 1 || courseNumber > 5) throw new CourseNumberException();
             this.courseNumber = courseNumber;
         }
 
